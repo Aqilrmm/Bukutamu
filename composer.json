@@ -1,0 +1,26 @@
+{
+    "name": "codeigniter4/appstarter",
+    "description": "CodeIgniter4 Buku Tamu Application",
+    "type": "project",
+    "license": "MIT",
+    "homepage": "https://codeigniter.com",
+    "require": {
+        "php": "^8.1 || ^8.2 || ^8.3",
+        "codeigniter4/framework": "^4.5.26",
+        "mpdf/mpdf": "^8.2"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "phpunit/phpunit": "^10.5"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "scripts": {
+    }
+}
