@@ -7,7 +7,7 @@ class KeperluanModel extends BaseModel
 {
     protected $table = 'keperluan';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama', 'is_active'];
+    protected $allowedFields = ['nama', 'is_active', 'urutan'];
     
     public function getActiveOrdered()
     {

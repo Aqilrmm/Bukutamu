@@ -198,7 +198,7 @@
     <div id="loadingSpinner" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
         <div class="bg-white rounded-lg p-6 flex flex-col items-center shadow-2xl">
             <div class="spinner mb-4"></div>
-            <p class="text-gray-700 font-medium">Memproses data...</p>
+            <p class="text-gray-700 font-medium">Loading...</p>
         </div>
     </div>
     

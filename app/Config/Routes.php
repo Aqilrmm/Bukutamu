@@ -8,9 +8,9 @@ use CodeIgniter\Router\RouteCollection;
 
 // Landing Page
 $routes->get('/', 'Home::index');
-$routes->get('registrasi', 'Home::registrasi');
+$routes->get('registrasi', 'Home::index');
 $routes->post('registrasi/save', 'Home::saveRegistrasi');
-$routes->get('survei', 'Home::survei');
+$routes->get('survei', 'Home::index');
 $routes->get('api/get-tamu', 'Home::getTamu');
 $routes->post('survei/save', 'Home::saveSurvei');
 $routes->get('api/keperluan', 'Home::getKeperluan');
@@ -39,8 +39,10 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin', 'filter' => 'au
     
     // Keperluan
     $routes->get('keperluan', 'Keperluan::index');
+    $routes->get('keperluan/list', 'Keperluan::list');
     $routes->post('keperluan/save', 'Keperluan::save');
     $routes->post('keperluan/update/(:num)', 'Keperluan::update/$1');
+    $routes->post('keperluan/toggle/(:num)', 'Keperluan::toggle/$1');
     $routes->delete('keperluan/delete/(:num)', 'Keperluan::delete/$1');
     
     // Survei Kepuasan & Penilaian

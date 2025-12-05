@@ -32,7 +32,8 @@ class Home extends BaseController
     {
         $data = [
             'title' => 'Selamat Datang',
-            'profil' => $this->profilInstansiModel->getProfil()
+            'profil' => $this->profilInstansiModel->getProfil(),
+            'keperluan_list' => $this->keperluanModel->getActiveOrdered()
         ];
         
         return view('landing/index', $data);
