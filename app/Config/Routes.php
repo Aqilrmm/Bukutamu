@@ -5,6 +5,10 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+// Handle OPTIONS request untuk CORS preflight
+$routes->options('(:any)', function() {
+    return '';
+});
 
 // Landing Page
 $routes->get('/', 'Home::index');
@@ -15,6 +19,7 @@ $routes->get('api/get-tamu', 'Home::getTamu');
 $routes->post('survei/save', 'Home::saveSurvei');
 $routes->get('api/keperluan', 'Home::getKeperluan');
 $routes->get('api/penilaian-kategori', 'Home::getPenilaianKategori');
+
 
 // Admin Authentication
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
