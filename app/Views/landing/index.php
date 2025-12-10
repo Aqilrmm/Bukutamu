@@ -545,7 +545,7 @@
             success: function(response) {
                 hideLoading();
                 
-                if (response.success) {
+                if (response.success == true) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Registrasi Berhasil!',
