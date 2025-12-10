@@ -329,7 +329,7 @@
         document.getElementById('section-' + section).classList.remove('hidden');
         
         // Update URL without reload
-        window.history.pushState({section: section}, '', '/' + (section === 'beranda' ? '' : section));
+        //window.history.pushState({section: section}, '', '/' + (section === 'beranda' ? '' : section));
         
         // Update active nav link
         document.querySelectorAll('.nav-link').forEach(link => {
@@ -374,14 +374,8 @@
         });
         
         // Initial load
-        const currentPath = window.location.pathname;
-        if (currentPath.includes('registrasi')) {
-            navigateTo('registrasi');
-        } else if (currentPath.includes('survei')) {
-            navigateTo('survei');
-        } else {
-            navigateTo('beranda');
-        }
+        navigateTo('beranda');
+
     });
     
     // Initialize Signature Pad
