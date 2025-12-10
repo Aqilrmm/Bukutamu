@@ -9,50 +9,43 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class BaseController
- *
- * BaseController provides a convenient place for loading components
- * and performing functions that are needed by all your controllers.
- * Extend this class in any new controllers:
- *     class Home extends BaseController
- *
- * For security be sure to declare any new methods as protected or private.
- */
 abstract class BaseController extends Controller
 {
-    /**
-     * Instance of the main Request object.
-     *
-     * @var CLIRequest|IncomingRequest
-     */
     protected $request;
-
-    /**
-     * An array of helpers to be loaded automatically upon
-     * class instantiation. These helpers will be available
-     * to all other controllers that extend BaseController.
-     *
-     * @var list<string>
-     */
     protected $helpers = [];
 
-    /**
-     * Be sure to declare properties for any property fetch you initialized.
-     * The creation of dynamic property is deprecated in PHP 8.2.
-     */
-    // protected $session;
-
-    /**
-     * @return void
-     */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-
-        // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = service('session');
+        
+        // Tambahkan CORS headers
+        $this->setCorsHeaders();
+    }
+    
+    protected function setCorsHeaders()
+    {
+        $allowedOrigins = [
+            'http://dpmptsp.tail8af30b.ts.net',
+            'https://dpmptsp.tail8af30b.ts.net',
+            'http://localhost',
+            'http://localhost:8080'
+        ];
+        
+        $origin = $this->request->getHeaderLine('Origin');
+        
+        if (in_array($origin, $allowedOrigins)) {
+            header('Access-Control-Allow-Origin: ' . $origin);
+        } else {
+            header('Access-Control-Allow-Origin: *');
+        }
+        
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Max-Age: 86400');
+        
+        if ($this->request->getMethod() === 'options') {
+            exit(0);
+        }
     }
 }
